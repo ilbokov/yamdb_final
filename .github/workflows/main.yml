@@ -52,13 +52,13 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
-          stack_file_name: /home/ilbokov/yamdb_final/docker-compose.yaml 
+          passphrase: ${{ secrets.PASSPHRASE }}
+          stack_file_name: docker-compose.yaml
           script: |
-            cd /home/ilbokov/yamdb_final
             sudo docker pull ilbokov/yamdb_final
             sudo docker-compose stop
             sudo docker-compose rm web
-            # Создаст файл для переменных окружения .1
+            # Создаст файл для переменных окружения
             touch .env 
             # Наполнит файл переменными окружения из секретов GitHub
             echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
