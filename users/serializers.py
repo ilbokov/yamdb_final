@@ -33,14 +33,13 @@ class RegistrationSerializer(serializers.ModelSerializer):
         fields['username'] = fields['email']
         fields['email_code'] = uuid.uuid4()
         fields['password'] = fields['email_code']
-        user = User.objects.create_user(**fields)
         send_mail(
             'Your confirmation code from YAMDB API',
             f'Hello. Your API code: {fields["email_code"]}',
             "foryandextest@mail.ru",  # from e-mail
             ["foryandextest@mail.ru"],  # change to [{fields['email']}]
         )
-        return user
+        return User.objects.create_user(**fields)
 
 
 class LoginSerializer(serializers.Serializer):
