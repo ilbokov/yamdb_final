@@ -22,7 +22,6 @@ jobs:
     - name: Test with flake8 and django tests
       run: |
         python -m flake8
-        cd api_yamdb/
         python manage.py test
   build_and_push_to_docker_hub:
     name: Push Docker image to Docker Hub
@@ -53,10 +52,9 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
-          passphrase: ${{ secrets.PASSPHRASE }}
           stack_file_name: docker-compose.yaml
           script: |
-            sudo docker pull <имя-пользователя>/<имя-репозитория>
+            sudo docker pull ilbokov/yamdb_final
             sudo docker-compose stop
             sudo docker-compose rm web
             # Создаст файл для переменных окружения
