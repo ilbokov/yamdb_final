@@ -54,6 +54,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           stack_file_name: /home/ilbokov/yamdb_final/docker-compose.yaml
           script: |
+            cd /home/ilbokov/yamdb_final
             sudo docker pull /home/ilbokov/yamdb_final
             sudo docker-compose stop
             sudo docker-compose rm web
