@@ -16,7 +16,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', default='*').split(' ')
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', default='*').split()
 
 
 # Application definition
@@ -46,7 +46,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'api_yamdb.urls'
 
-TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -123,8 +123,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static/'),)
 
@@ -153,8 +153,8 @@ AUTH_USER_MODEL = 'users.User'
 
 EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = 2525
-EMAIL_HOST_USER = "foryandextest@mail.ru"
-EMAIL_HOST_PASSWORD = ""  # add password here
+EMAIL_HOST_USER = 'foryandextest@mail.ru'
+EMAIL_HOST_PASSWORD = ''  # add password here
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 SERVER_EMAIL = EMAIL_HOST_USER
